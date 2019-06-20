@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+mongoose.set('useCreateIndex', true);
 
 const googlebooks = new Schema({
   title: { type: String, required: true },

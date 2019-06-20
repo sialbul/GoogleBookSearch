@@ -31,10 +31,10 @@ class SaveBook extends Component {
                     <SavedResult savedBooks={this.state.savedBooks} handleDeleteButton={this.handleDeleteButton} />
                 </Container>
             </Container>
-        )
+        );
     }
 }
 
 
 
-export default SaveBook 
+export default SaveBook;

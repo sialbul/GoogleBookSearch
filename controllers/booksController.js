@@ -16,10 +16,19 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
+    console.log("bookscontroller.create req="+req.body);
+    let newBook = req.body;
+    newBook.author = newBook.author[0];
     db.Book
       .create(req.body)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+      .then(dbModel => {
+        console.log("database response = "+dbModel);
+        return res.json(dbModel)
+      })
+      .catch(err => {
+        console.log("error in database. err="+err);
+        return res.status(422).json(err)
+      });
   },
   update: function(req, res) {
     db.Book

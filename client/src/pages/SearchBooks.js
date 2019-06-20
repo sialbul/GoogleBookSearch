@@ -33,10 +33,10 @@ class SearchBooks extends Component {
                     // store response in a array
                     let results = res.data.items
                     //map through the array 
-                    results = results.map(result => {
+                    results = results.map((result,i) => {
                         //store each book information in a new object 
                         result = {
-                            key: result.id,
+                            key: i,
                             id: result.id,
                             title: result.volumeInfo.title,
                             author: result.volumeInfo.authors,
@@ -55,10 +55,10 @@ class SearchBooks extends Component {
 
     handleSavedButton = event => {
         // console.log(event)
-        event.preventDefault();
         console.log(this.state.books)
         let savedBooks = this.state.books.filter(book => book.id === event.target.id)
         savedBooks = savedBooks[0];
+        console.log(savedBooks);
         API.saveBook(savedBooks)
             .then(this.setState({ message: alert("Your book is saved") }))
             .catch(err => console.log(err))
@@ -67,7 +67,7 @@ class SearchBooks extends Component {
         return (
             <Container fluid>
                 <Jumbotron>
-                    <h1 className="text-white">Find Your Favorite Books with GoogleBook API</h1>
+                    {/* <h1 className="text-white">Find Your Favorite Books with GoogleBook API</h1> */}
                 </Jumbotron>
                 <Container>
                     <Row>
@@ -90,4 +90,4 @@ class SearchBooks extends Component {
 
 }
 
-export default SearchBooks
+export default SearchBooks;
